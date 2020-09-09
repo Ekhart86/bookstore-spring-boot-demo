@@ -17,18 +17,18 @@ create db bookdb;
 
 use bookdb;
 
-CREATE TABLE BOOK (
-       ID int(11) NOT NULL AUTO_INCREMENT,
-       AUTHOR varchar(255) DEFAULT NULL,
-       CATEGORY varchar(255) DEFAULT NULL,
-       NAME varchar(255) DEFAULT NULL,
-       PAGES int(11) DEFAULT NULL,
-       PRICE int(11) DEFAULT NULL,
-       PUBLICATION varchar(255) DEFAULT NULL,
-       PRIMARY KEY (ID)
+CREATE TABLE book (
+       id int(11) NOT NULL AUTO_INCREMENT,
+       author varchar(255) DEFAULT NULL,
+       category varchar(255) DEFAULT NULL,
+       name varchar(255) DEFAULT NULL,
+       pages int(11) DEFAULT NULL,
+       price int(11) DEFAULT NULL,
+       publication varchar(255) DEFAULT NULL,
+       PRIMARY KEY (id)
      );
 
-INSERT INTO BOOK (author, category, name, pages, price, publication) VALUES
+INSERT INTO book (author, category, name, pages, price, publication) VALUES
 ('Charles Dickens', 'essays', 'Fletcher and Webster', 100, 550, 'FR Publication'),
 ('George Eliot', 'journalism', 'Victorian era', 500, 200, 'US Publication'),
 ('George Orwell', 'novels', 'Animal Farm', 700, 240, 'UK Publication');
