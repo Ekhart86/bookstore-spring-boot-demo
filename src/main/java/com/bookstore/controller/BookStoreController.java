@@ -4,7 +4,6 @@ import com.bookstore.entity.Book;
 import com.bookstore.services.BookStoreService;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLDataException;
 import java.util.List;
 
 @RestController
@@ -38,7 +37,7 @@ public class BookStoreController {
     }
 
     @PutMapping("/books/{id}")
-    public Book updateBook(@PathVariable("id") int id, @RequestBody Book book){
+    public Book updateBook(@PathVariable("id") int id, @RequestBody Book book) {
         return service.updateBook(id, book);
     }
 
