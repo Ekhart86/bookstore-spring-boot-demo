@@ -18,15 +18,15 @@ create db bookdb;
 use bookdb;
 
 CREATE TABLE BOOK (
-    ->   ID int(11) NOT NULL AUTO_INCREMENT,
-    ->   AUTHOR varchar(255) DEFAULT NULL,
-    ->   CATEGORY varchar(255) DEFAULT NULL,
-    ->   NAME varchar(255) DEFAULT NULL,
-    ->   PAGES int(11) DEFAULT NULL,
-    ->   PRICE int(11) DEFAULT NULL,
-    ->   PUBLICATION varchar(255) DEFAULT NULL,
-    ->   PRIMARY KEY (ID)
-    -> );
+       ID int(11) NOT NULL AUTO_INCREMENT,
+       AUTHOR varchar(255) DEFAULT NULL,
+       CATEGORY varchar(255) DEFAULT NULL,
+       NAME varchar(255) DEFAULT NULL,
+       PAGES int(11) DEFAULT NULL,
+       PRICE int(11) DEFAULT NULL,
+       PUBLICATION varchar(255) DEFAULT NULL,
+       PRIMARY KEY (ID)
+     );
 
 INSERT INTO BOOK (author, category, name, pages, price, publication) VALUES
 ('Charles Dickens', 'essays', 'Fletcher and Webster', 100, 550, 'FR Publication'),
