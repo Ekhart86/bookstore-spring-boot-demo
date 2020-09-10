@@ -1,13 +1,11 @@
 package com.bookstore.services;
 
 import com.bookstore.entity.Book;
-import com.bookstore.exception.DuplicateRecordException;
 import com.bookstore.exception.ResourceNotFoundException;
 import com.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -66,5 +64,5 @@ public class BookStoreServiceImpl implements BookStoreService {
         return bookRepository.existsByName(book.getName())
                 && bookRepository.existsByAuthor(book.getAuthor())
                 && bookRepository.existsByPublication(book.getPublication());
-        }
+    }
 }
