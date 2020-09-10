@@ -1,6 +1,7 @@
 package com.bookstore.services;
 
 import com.bookstore.entity.Book;
+import com.bookstore.exception.DuplicateRecordException;
 import com.bookstore.exception.ResourceNotFoundException;
 import com.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -24,11 +25,21 @@ public class BookStoreServiceImpl implements BookStoreService {
 
     @Override
     public Book createBook(Book book) {
+        if (bookRepository.existsByName(book.getName())
+                && bookRepository.existsByAuthor(book.getAuthor())
+                && bookRepository.existsByPublication(book.getPublication())) {
+            throw new DuplicateRecordException(book);
+        }
         return bookRepository.save(book);
     }
 
     @Override
     public Book updateBook(int bookId, Book book) {
+        if (bookRepository.existsByName(book.getName())
+                && bookRepository.existsByAuthor(book.getAuthor())
+                && bookRepository.existsByPublication(book.getPublication())) {
+            throw new DuplicateRecordException(book);
+        }
         Book bookFromDB = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book", "id", bookId));
         bookFromDB.setName(book.getName());
@@ -56,6 +67,6 @@ public class BookStoreServiceImpl implements BookStoreService {
 
     @Override
     public Book findByNameBook(String name) {
-        return  bookRepository.findByName(name).orElseThrow(() -> new ResourceNotFoundException("Book", "name", name));
+        return bookRepository.findByName(name).orElseThrow(() -> new ResourceNotFoundException("Book", "name", name));
     }
 }

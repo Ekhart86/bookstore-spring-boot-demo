@@ -5,9 +5,10 @@ An example of a Spring boot microservice implementing CRUD covered by various ki
 
 By default, the microservice is configured to work with a real MySql database, 
 you must either install and configure the MySql database before starting. 
+It will be enough for a database to be created in the database, the tables will be created automatically.
+
 Or change the base type to H2 in the application.properties settings. 
 H2 settings can be taken from test.properties
-
 
 Scripts for creating MySql database. 
 Creation and filling of the required table.

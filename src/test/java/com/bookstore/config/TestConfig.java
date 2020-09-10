@@ -28,25 +28,23 @@ public class TestConfig {
 
     @Bean
     public Book firstBook() {
-        return Book.builder()
-                .setName("First book")
-                .setAuthor("First author")
-                .setPublication("First publication")
-                .setCategory("First category")
-                .setPages(100)
-                .setPrice(1000)
-                .build();
+        return new Book(null,
+                "First book",
+                "First author",
+                "First publication",
+                "First category",
+                100,
+                1000);
     }
 
     @Bean
     public Book secondBook() {
-        return Book.builder()
-                .setName("Second book")
-                .setAuthor("Second author")
-                .setPublication("Second publication")
-                .setCategory("Second category")
-                .setPages(200)
-                .setPrice(2000)
-                .build();
+        return new Book(null,
+                "Second book",
+                "Second author",
+                "Second publication",
+                "Second category",
+                200,
+                2000);
     }
 }

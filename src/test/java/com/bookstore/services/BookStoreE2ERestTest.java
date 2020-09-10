@@ -68,7 +68,7 @@ public class BookStoreE2ERestTest {
     public void getAllBooksE2ERestTest() {
         Response response = given()
                 .spec(requestSpecification)
-                .get(testPath + port + "/library/books");
+                .get(testPath + port + "/api/books");
         assertThat(response.statusCode(), is(200));
         Book[] arrayBooks = response.as(Book[].class);
         assertThat(Collections.singletonList(arrayBooks.length), hasSize(1));
@@ -81,7 +81,7 @@ public class BookStoreE2ERestTest {
         Response response = given()
                 .spec(requestSpecification)
                 .body(mapper.writeValueAsString(secondBook))
-                .post(testPath + port + "/library/books");
+                .post(testPath + port + "/api/books");
         assertThat(response.statusCode(), is(200));
         Book createdBook = response.as(Book.class);
         assertThat(createdBook.getName(), is("Second book"));
@@ -98,7 +98,7 @@ public class BookStoreE2ERestTest {
         Response response = given()
                 .spec(requestSpecification)
                 .body(mapper.writeValueAsString(firstBook))
-                .put(testPath + port + "/library/books/" + firstBook.getId());
+                .put(testPath + port + "/api/books/" + firstBook.getId());
         assertThat(response.statusCode(), is(200));
         Book updatedBook = response.as(Book.class);
         assertThat(updatedBook.getAuthor(), is("Update author"));
@@ -114,7 +114,7 @@ public class BookStoreE2ERestTest {
         assertThat(booksBeforeDelete, hasSize(1));
         Response response = given()
                 .spec(requestSpecification)
-                .delete(testPath + port + "/library/books/" + firstBook.getId());
+                .delete(testPath + port + "/api/books/" + firstBook.getId());
         assertThat(response.statusCode(), is(200));
         Book deletedBook = response.as(Book.class);
         assertThat(deletedBook.getName(), is("First book"));

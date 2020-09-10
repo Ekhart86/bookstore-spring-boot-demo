@@ -1,6 +1,5 @@
 package com.bookstore.entity;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -38,56 +37,4 @@ public class Book {
     @Column(name = "price", nullable = false)
     private int price;
 
-    public static BookBuilder builder() {
-        return new BookBuilder();
-    }
-
-    public static class BookBuilder {
-        private Integer id;
-        private String name;
-        private String author;
-        private String publication;
-        private String category;
-        private int pages;
-        private int price;
-
-        public BookBuilder setId(int id) {
-            this.id = id;
-            return this;
-        }
-
-        public BookBuilder setName(@NotNull String name) {
-            this.name = name;
-            return this;
-        }
-
-        public BookBuilder setAuthor(@NotNull String author) {
-            this.author = author;
-            return this;
-        }
-
-        public BookBuilder setPublication(@NotNull String publication) {
-            this.publication = publication;
-            return this;
-        }
-
-        public BookBuilder setCategory(@NotNull String category) {
-            this.category = category;
-            return this;
-        }
-
-        public BookBuilder setPages(@NotNull int pages) {
-            this.pages = pages;
-            return this;
-        }
-
-        public BookBuilder setPrice(@NotNull int price) {
-            this.price = price;
-            return this;
-        }
-
-        public Book build() {
-            return new Book(id, name, author, publication, category, pages, price);
-        }
-    }
 }
