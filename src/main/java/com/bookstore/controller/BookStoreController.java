@@ -1,6 +1,7 @@
 package com.bookstore.controller;
 
 import com.bookstore.entity.Book;
+import com.bookstore.exception.DuplicateRecordException;
 import com.bookstore.services.BookStoreService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,11 +34,17 @@ public class BookStoreController {
 
     @PostMapping("/books")
     public Book createBook(@RequestBody Book book) {
+        if(service.existBook(book)) {
+            throw new DuplicateRecordException(book);
+        }
         return service.createBook(book);
     }
 
     @PutMapping("/books/{id}")
     public Book updateBook(@PathVariable("id") int id, @RequestBody Book book) {
+        if(service.existBook(book)) {
+            throw new DuplicateRecordException(book);
+        }
         return service.updateBook(id, book);
     }
 

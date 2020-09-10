@@ -7,6 +7,7 @@ import com.bookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -25,21 +26,11 @@ public class BookStoreServiceImpl implements BookStoreService {
 
     @Override
     public Book createBook(Book book) {
-        if (bookRepository.existsByName(book.getName())
-                && bookRepository.existsByAuthor(book.getAuthor())
-                && bookRepository.existsByPublication(book.getPublication())) {
-            throw new DuplicateRecordException(book);
-        }
         return bookRepository.save(book);
     }
 
     @Override
     public Book updateBook(int bookId, Book book) {
-        if (bookRepository.existsByName(book.getName())
-                && bookRepository.existsByAuthor(book.getAuthor())
-                && bookRepository.existsByPublication(book.getPublication())) {
-            throw new DuplicateRecordException(book);
-        }
         Book bookFromDB = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book", "id", bookId));
         bookFromDB.setName(book.getName());
@@ -69,4 +60,11 @@ public class BookStoreServiceImpl implements BookStoreService {
     public Book findByNameBook(String name) {
         return bookRepository.findByName(name).orElseThrow(() -> new ResourceNotFoundException("Book", "name", name));
     }
+
+    @Override
+    public boolean existBook(Book book) {
+        return bookRepository.existsByName(book.getName())
+                && bookRepository.existsByAuthor(book.getAuthor())
+                && bookRepository.existsByPublication(book.getPublication());
+        }
 }

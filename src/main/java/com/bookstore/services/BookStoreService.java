@@ -16,4 +16,6 @@ public interface BookStoreService {
     Book deleteBook(int bookId);
 
     Book findByNameBook(String name);
+
+    boolean existBook(Book book);
 }
