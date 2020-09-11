@@ -92,3 +92,7 @@ If you send a request using postman then add a header:
 Authorization: Basic YWRtaW46cGFzc3dvcmQ=
 ```
 User passwords are stored in the users table encoded using the BCrypt Encoder.
+
+![Auth -1](https://user-images.githubusercontent.com/25115868/92894974-c0914500-f423-11ea-9ab5-10bd30804bd7.PNG)
+
+![Auth-2](https://user-images.githubusercontent.com/25115868/92895087-dd2d7d00-f423-11ea-9545-39b82042ec56.PNG)
