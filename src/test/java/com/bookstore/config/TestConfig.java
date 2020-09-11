@@ -2,6 +2,7 @@ package com.bookstore.config;
 
 import com.bookstore.entity.Book;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
@@ -14,9 +15,13 @@ public class TestConfig {
 
     @Bean
     public RequestSpecification requestSpecification() {
+        PreemptiveBasicAuthScheme auth = new PreemptiveBasicAuthScheme();
+        auth.setUserName("test");
+        auth.setPassword("test");
         return new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
+                .setAuth(auth)
                 .log(LogDetail.ALL)
                 .build();
     }
