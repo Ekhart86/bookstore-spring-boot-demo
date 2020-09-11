@@ -1,4 +1,4 @@
-# spring-Boot-crud-tests-example
+# spring-Boot-crud-example
 
 Sample Spring Boot Microservice Implementing CRUD 
 with Spring Security Basic Authentication, covered unit and integration tests.
